@@ -18,6 +18,17 @@ CREATE TABLE `alumnos` (
   PRIMARY KEY (`id_alumnos`)
 );
 
+CREATE TABLE `profesores` (
+  `id_profesores` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) NOT NULL,
+  `apellido` varchar(100) NOT NULL,
+  `telefono` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `direccion` varchar(250) DEFAULT NULL,
+  `cuit` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id_profesores`)
+);
+
 CREATE TABLE `clases` (
   `id_clases` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) NOT NULL,
@@ -41,13 +52,3 @@ CREATE TABLE `clasesalumnos` (
   CONSTRAINT `id_clases` FOREIGN KEY (`id_clases`) REFERENCES `clases` (`id_clases`)
 );
 
-CREATE TABLE `profesores` (
-  `id_profesores` int NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(100) NOT NULL,
-  `apellido` varchar(100) NOT NULL,
-  `telefono` varchar(50) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `direccion` varchar(250) DEFAULT NULL,
-  `cuit` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id_profesores`)
-);
