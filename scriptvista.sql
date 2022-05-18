@@ -1,3 +1,5 @@
+use gimnasio;
+
 create view alumono_clase as 
 select
 concat_ws(' ',a.nombre,a.apellido) as nombre_alumno,
@@ -5,6 +7,8 @@ concat_ws(' ',a.nombre,a.apellido) as nombre_alumno,
 from clasesalumnos cl
 inner join clases c on cl.id_clases = c.id_clases
 inner join alumnos a on cl.id_alumnos = a.id_alumnos;
+
+select * from alumono_clase;
 
 create view clase_profesor_actividad as 
 select
@@ -15,11 +19,15 @@ from gimnasio.clases c
 inner join actividad a on c.id_actividad = a.Id_Actividad
 inner join profesores p on c.id_profesor = p.id_profesores;
 
+select * from clase_profesor_actividad;
+
 create view edad_alumnos as 
 select
 concat_ws(' ', a.nombre,a.apellido) as nombre_completo,
 a.edad as edad
 from alumnos a;
+
+select * from edad_alumnos;
 
 create view datos_profesor as 
 select
@@ -28,6 +36,8 @@ p.telefono,
 p.cuit
 from profesores p;
 
+select * from datos_profesor;
+
 create view catidad_alumnos_clases as 
 select 
 c.nombre as nombre_clase,
@@ -35,3 +45,5 @@ count(cl.id_alumnos) as cantidad_alumnos
 from clasesalumnos cl
 inner join clases c on cl.id_clases = c.id_clases
 group by cl.id_clases;
+
+select * from catidad_alumnos_clases;
