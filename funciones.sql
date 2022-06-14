@@ -25,7 +25,9 @@ RETURNS varchar(200)
 reads sql data
 BEGIN
 declare nombreapellido varchar(200);
-select concat(nombre,' ',apellido) into nombreapellido from gimnasio.profesores;
+select concat(p.nombre,' ',p.apellido) into nombreapellido from gimnasio.clases c
+inner join gimnasio.profesores p on c.id_profesor = p.id_profesores
+where id_clases = cursoId;
 RETURN nombreapellido;
 END$$
 
